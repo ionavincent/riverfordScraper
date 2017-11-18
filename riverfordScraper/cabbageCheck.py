@@ -2,13 +2,16 @@ def containsCababage(boxContents):
     """Returns true or false as to whether there are any types of
     cabbage in the given box"""
     for item in boxContents:
-        if 'cabage' in item:
+        if 'cabbage' in item.lower():
             return True
+    return False
+
 
 def findAlternativeBoxes(boxesInfo, allowedBoxes):
     """Searches for boxes from the specified list containing no cabbage"""
-    cabbageFreeBoxes=[]
+    cabbageFreeBoxes = []
     for boxName, items in boxesInfo.iteritems():
         if boxName in allowedBoxes and not containsCababage(items):
             cabbageFreeBoxes.append(boxName)
+    print cabbageFreeBoxes
     return cabbageFreeBoxes
