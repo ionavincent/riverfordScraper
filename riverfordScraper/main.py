@@ -18,7 +18,7 @@ def main():
             print ("Your preferred box has cabbage in it this week. But fear not, there are "
             "cabbage free alternatives: %s" % ', '.join(altBoxes))
         else:
-            print "MWAHAHAHAHA you must eat cabbage"
+            print "Alas, all the boxes you buy contain cabbage this week"
     else:
         print "You are free from cabbage this week"
 
