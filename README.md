@@ -10,7 +10,10 @@ an alternative box.
 It requires the following environment variables to be set:
 
 `UNWANTED_VEGETABLE`: The name of the vegetable you wish to avoid
-`PREFERRED_BOX`: The name of your preferred box, as it appears [here](https://www.riverford.co.uk/box-contents)
+
+`PREFERRED_BOX`: The name of your preferred box, as it appears
+[here](https://www.riverford.co.uk/box-contents)
+
 `ALLOWED_BOXES`: A comma separated list of all permitted box names, as they
 appear [here](https://www.riverford.co.uk/box-contents)
 
