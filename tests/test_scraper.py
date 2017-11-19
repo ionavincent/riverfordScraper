@@ -27,8 +27,8 @@ class TestScraper(unittest.TestCase):
 
     def testContainsCabbage(self):
         self.assertFalse(vegetableCheck.containsVegetable(self.unwantedVeg,
-                        self.sampleBoxContents["Juicing box"]),
-                        "Found invisible cabbage")
+                         self.sampleBoxContents["Juicing box"]),
+                         "Found invisible cabbage")
 
         self.assertTrue(vegetableCheck.containsVegetable(self.unwantedVeg,
                         self.sampleBoxContents["Bumper veg box (original)"]),
@@ -45,7 +45,7 @@ class TestScraper(unittest.TestCase):
                                                     self.sampleBoxContents,
                                                     ["Salad box",
                                                      "100% UK veg box"]),
-                        ["Salad box"])
+                         ["Salad box"])
 
 
 if __name__ == '__main__':
