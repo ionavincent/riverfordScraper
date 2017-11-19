@@ -2,7 +2,7 @@ import json
 import os
 import unittest
 
-from riverfordScraper import cabbageCheck, parser
+from riverfordScraper import parser, vegetableCheck
 
 
 class TestScraper(unittest.TestCase):
@@ -25,20 +25,20 @@ class TestScraper(unittest.TestCase):
                          "Wrong box contents extracted")
 
     def testContainsCabbage(self):
-        self.assertFalse(cabbageCheck.containsCababage(
+        self.assertFalse(vegetableCheck.containsVegetable(
                         self.sampleBoxContents["Juicing box"]),
                         "Found invisible cabbage")
 
-        self.assertTrue(cabbageCheck.containsCababage(
+        self.assertTrue(vegetableCheck.containsVegetable(
                         self.sampleBoxContents["Bumper veg box (original)"]),
                         "Failed to spot cabbage")
 
     def testfindAlternativeBoxes(self):
-        self.assertEqual(cabbageCheck.findAlternativeBoxes(
+        self.assertEqual(vegetableCheck.findAlternativeBoxes(
                                                     self.sampleBoxContents,
                                                     self.allowedBoxes),
                          [])
-        self.assertEqual(cabbageCheck.findAlternativeBoxes(
+        self.assertEqual(vegetableCheck.findAlternativeBoxes(
                                                     self.sampleBoxContents,
                                                     ["Salad box",
                                                      "100% UK veg box"]),

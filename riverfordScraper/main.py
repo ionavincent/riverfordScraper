@@ -1,9 +1,8 @@
-import parser
-import sched
-
-import cabbageCheck
 import config
+import parser
+
 import notifier
+import vegetableCheck
 from scraper import Scraper
 
 
@@ -19,21 +18,27 @@ def main():
 
 
 def getMessage(allBoxesInfo):
-    if cabbageCheck.containsCababage(allBoxesInfo[config.preferredBox]):
-        altBoxes = cabbageCheck.findAlternativeBoxes(allBoxesInfo,
-                                                     config.allowedBoxes)
+    if vegetableCheck.containsVegetable(config.unwantedVegetable,
+                                        allBoxesInfo[config.preferredBox]):
+        altBoxes = vegetableCheck.findAlternativeBoxes(
+                                                    config.unwantedVegetable,
+                                                    allBoxesInfo,
+                                                    config.allowedBoxes)
         if len(altBoxes):
-            return ("Your preferred box has cabbage in it this week. "
-                   "But fear not, there are "
-                   "cabbage free alternatives: %s" % ', '.join(altBoxes))
+            return ("Your preferred box has %s in it this week. "
+                    "But fear not, there are "
+                    "%s free alternatives: %s" % (config.unwantedVegetable,
+                                                  ', '.join(altBoxes)))
         else:
-            return ("Alas, all the boxes you buy contain cabbage this week. "
-                    "Bad luck.")
+            return ("Alas, *all your box options contain %s* this week. "
+                    "Bad luck.\n\n*Contents:*\n%s" % (
+                                config.unwantedVegetable,
+                                '\n'.join(allBoxesInfo[config.preferredBox])))
     else:
-        return "You are free from cabbage this week"
+        return ("*You are free from %s this week.*\n\n*Contents:*"
+                "\n%s" % (config.unwantedVegetable,
+                          '\n'.join(allBoxesInfo[config.preferredBox])))
 
 
 if __name__ == '__main__':
     main()
-
-# TODO: Add config file

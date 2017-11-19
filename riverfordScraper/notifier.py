@@ -1,7 +1,8 @@
+import config
 import json
+
 import requests
 
-import config
 
 def sendSlackNotification(text):
     slack_data = {'text': "%s" % text}
