@@ -13,5 +13,4 @@ def findAlternativeBoxes(boxesInfo, allowedBoxes):
     for boxName, items in boxesInfo.iteritems():
         if boxName in allowedBoxes and not containsCababage(items):
             cabbageFreeBoxes.append(boxName)
-    print cabbageFreeBoxes
     return cabbageFreeBoxes

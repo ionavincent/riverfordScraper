@@ -14,7 +14,4 @@ def parseBoxContentsPage(scrapedHtml):
         contents = [item.text for item in boxInfo.find_all('li')]
         boxContents[titleString] = contents
 
-    import json
-    with open("/Users/ivincent/boxContents.json", "w+") as f:
-        f.write(json.dumps(boxContents, indent=4, sort_keys=True))
     return boxContents
