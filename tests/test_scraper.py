@@ -10,6 +10,7 @@ class TestScraper(unittest.TestCase):
         self.allowedBoxes = ["Large veg box (less roots)",
                              "Large veg box",
                              "Bumper veg box (original)"]
+        self.unwantedVeg = "cabbage"
 
         with open(os.path.join(os.path.dirname(__file__),
                                "data/scrapedHtml.html"), "r") as f:
@@ -25,24 +26,26 @@ class TestScraper(unittest.TestCase):
                          "Wrong box contents extracted")
 
     def testContainsCabbage(self):
-        self.assertFalse(vegetableCheck.containsVegetable(
+        self.assertFalse(vegetableCheck.containsVegetable(self.unwantedVeg,
                         self.sampleBoxContents["Juicing box"]),
                         "Found invisible cabbage")
 
-        self.assertTrue(vegetableCheck.containsVegetable(
+        self.assertTrue(vegetableCheck.containsVegetable(self.unwantedVeg,
                         self.sampleBoxContents["Bumper veg box (original)"]),
                         "Failed to spot cabbage")
 
     def testfindAlternativeBoxes(self):
         self.assertEqual(vegetableCheck.findAlternativeBoxes(
+                                                    self.unwantedVeg,
                                                     self.sampleBoxContents,
                                                     self.allowedBoxes),
                          [])
         self.assertEqual(vegetableCheck.findAlternativeBoxes(
+                                                    self.unwantedVeg,
                                                     self.sampleBoxContents,
                                                     ["Salad box",
                                                      "100% UK veg box"]),
-                         ["Salad box"])
+                        ["Salad box"])
 
 
 if __name__ == '__main__':
